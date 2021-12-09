@@ -84,7 +84,7 @@ const base = "/";
 
 const nav = [
   { text: "导航", link: "/guide/" },
-  { text: "优质链接", link: "/doc/" },
+  { text: "收藏夹", link: "/favorite/" },
   { text: "React", link: "https://react.qdzhou.cn" },
   { text: "工程化", link: "https://engineering.qdzhou.cn" },
   { text: "算法", link: "https://algorithm.qdzhou.cn" },
