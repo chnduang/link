@@ -1332,13 +1332,13 @@ Organization](https://doocs.github.io/leetcode/#/)
 
 [码云](https://gitee.com/qdzhou/dashboard)
 
-[CircleCI](https://circleci.com/gh/ZQD1224)
+[CircleCI](https://circleci.com/gh/duangdong9)
 
-[Travis CI](https://www.travis-ci.org/github/ZQD1224)
+[Travis CI](https://www.travis-ci.org/github/duangdong9)
 
 [qdzhou\'s Profile \| Docker Hub](https://hub.docker.com/u/qdzhou)
 
-[Github](https://github.com/ZQD1224)
+[Github](https://github.com/duangdong9)
 
 [LeetCode](https://leetcode-cn.com/)
 
