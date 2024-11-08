@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Promise面试实战指北 | note</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/logo.webp">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="知识归纳总结">
+    <meta name="keywords" content="blog,react,node,js">
+    
+    <link rel="preload" href="/assets/css/0.styles.b4a844ec.css" as="style"><link rel="preload" href="/assets/js/app.447fea52.js" as="script"><link rel="preload" href="/assets/js/2.57da4f88.js" as="script"><link rel="preload" href="/assets/js/1.a76cc220.js" as="script"><link rel="preload" href="/assets/js/85.7e56ce9f.js" as="script"><link rel="prefetch" href="/assets/js/10.50f73657.js"><link rel="prefetch" href="/assets/js/100.6be385a1.js"><link rel="prefetch" href="/assets/js/101.81462761.js"><link rel="prefetch" href="/assets/js/102.c8574913.js"><link rel="prefetch" href="/assets/js/103.edf4da17.js"><link rel="prefetch" href="/assets/js/104.957e299a.js"><link rel="prefetch" href="/assets/js/105.62db7699.js"><link rel="prefetch" href="/assets/js/106.5bb35c23.js"><link rel="prefetch" href="/assets/js/107.a7d99347.js"><link rel="prefetch" href="/assets/js/108.e5a534df.js"><link rel="prefetch" href="/assets/js/109.6cbde664.js"><link rel="prefetch" href="/assets/js/11.0390ceee.js"><link rel="prefetch" href="/assets/js/110.c26bacc8.js"><link rel="prefetch" href="/assets/js/111.9360a59a.js"><link rel="prefetch" href="/assets/js/112.8cd53094.js"><link rel="prefetch" href="/assets/js/113.d0ebeec4.js"><link rel="prefetch" href="/assets/js/114.ec19f01c.js"><link rel="prefetch" href="/assets/js/115.4d3a89e6.js"><link rel="prefetch" href="/assets/js/116.a2a462f7.js"><link rel="prefetch" href="/assets/js/117.722c988a.js"><link rel="prefetch" href="/assets/js/118.f713753b.js"><link rel="prefetch" href="/assets/js/119.0125b80b.js"><link rel="prefetch" href="/assets/js/12.f88bec36.js"><link rel="prefetch" href="/assets/js/120.cd8ba30b.js"><link rel="prefetch" href="/assets/js/121.4c137fcb.js"><link rel="prefetch" href="/assets/js/122.d242343d.js"><link rel="prefetch" href="/assets/js/123.cdd643cd.js"><link rel="prefetch" href="/assets/js/124.a166a490.js"><link rel="prefetch" href="/assets/js/125.91acf062.js"><link rel="prefetch" href="/assets/js/126.09c27dbc.js"><link rel="prefetch" href="/assets/js/127.0d254650.js"><link rel="prefetch" href="/assets/js/128.431a6444.js"><link rel="prefetch" href="/assets/js/129.421c57ef.js"><link rel="prefetch" href="/assets/js/13.963ad03b.js"><link rel="prefetch" href="/assets/js/130.f980bd2e.js"><link rel="prefetch" href="/assets/js/131.f5d4dec1.js"><link rel="prefetch" href="/assets/js/132.b5fe7c86.js"><link rel="prefetch" href="/assets/js/133.e21e8968.js"><link rel="prefetch" href="/assets/js/134.cfde36a7.js"><link rel="prefetch" href="/assets/js/135.e11bbca9.js"><link rel="prefetch" href="/assets/js/136.d29baf7d.js"><link rel="prefetch" href="/assets/js/137.0d102a51.js"><link rel="prefetch" href="/assets/js/138.53de572f.js"><link rel="prefetch" href="/assets/js/139.35296624.js"><link rel="prefetch" href="/assets/js/14.512f15b9.js"><link rel="prefetch" href="/assets/js/140.939a9838.js"><link rel="prefetch" href="/assets/js/141.a0dbf983.js"><link rel="prefetch" href="/assets/js/142.b79d2722.js"><link rel="prefetch" href="/assets/js/143.f59c2798.js"><link rel="prefetch" href="/assets/js/144.45695bae.js"><link rel="prefetch" href="/assets/js/145.be0d5407.js"><link rel="prefetch" href="/assets/js/146.4eeb3c90.js"><link rel="prefetch" href="/assets/js/147.13a97e91.js"><link rel="prefetch" href="/assets/js/148.a9cb8c8d.js"><link rel="prefetch" href="/assets/js/149.3f1dd92d.js"><link rel="prefetch" href="/assets/js/15.a674496c.js"><link rel="prefetch" href="/assets/js/150.56dd1be8.js"><link rel="prefetch" href="/assets/js/151.fc9a2f7e.js"><link rel="prefetch" href="/assets/js/152.53bd3a44.js"><link rel="prefetch" href="/assets/js/153.5607c16e.js"><link rel="prefetch" href="/assets/js/154.ad730ace.js"><link rel="prefetch" href="/assets/js/155.57d2a2cb.js"><link rel="prefetch" href="/assets/js/156.a092fa0e.js"><link rel="prefetch" href="/assets/js/157.966a0773.js"><link rel="prefetch" href="/assets/js/158.04bf03ea.js"><link rel="prefetch" href="/assets/js/159.33574240.js"><link rel="prefetch" href="/assets/js/16.ed7e507f.js"><link rel="prefetch" href="/assets/js/160.cee6d2e8.js"><link rel="prefetch" href="/assets/js/161.45a39d07.js"><link rel="prefetch" href="/assets/js/162.f40c82ce.js"><link rel="prefetch" href="/assets/js/163.a8c1cfc2.js"><link rel="prefetch" href="/assets/js/164.d57c2637.js"><link rel="prefetch" href="/assets/js/165.44596485.js"><link rel="prefetch" href="/assets/js/166.989571e6.js"><link rel="prefetch" href="/assets/js/167.d50ff3ee.js"><link rel="prefetch" href="/assets/js/168.6035f621.js"><link rel="prefetch" href="/assets/js/169.330a08ba.js"><link rel="prefetch" href="/assets/js/17.de667ca5.js"><link rel="prefetch" href="/assets/js/170.9f889b63.js"><link rel="prefetch" href="/assets/js/171.8cf81cba.js"><link rel="prefetch" href="/assets/js/172.f0d70990.js"><link rel="prefetch" href="/assets/js/173.ea277ff7.js"><link rel="prefetch" href="/assets/js/174.4a3a3c49.js"><link rel="prefetch" href="/assets/js/175.cea93f7c.js"><link rel="prefetch" href="/assets/js/176.5dd9d8fc.js"><link rel="prefetch" href="/assets/js/177.02903ac2.js"><link rel="prefetch" href="/assets/js/178.46bd7e6a.js"><link rel="prefetch" href="/assets/js/179.e69ff40a.js"><link rel="prefetch" href="/assets/js/18.b44e84af.js"><link rel="prefetch" href="/assets/js/180.710c8f29.js"><link rel="prefetch" href="/assets/js/181.8069e76c.js"><link rel="prefetch" href="/assets/js/182.4c34a2bf.js"><link rel="prefetch" href="/assets/js/183.46c4777e.js"><link rel="prefetch" href="/assets/js/184.efb2e0ea.js"><link rel="prefetch" href="/assets/js/185.f18ec0c0.js"><link rel="prefetch" href="/assets/js/186.23f2ac84.js"><link rel="prefetch" href="/assets/js/187.3b612006.js"><link rel="prefetch" href="/assets/js/188.5a59c9aa.js"><link rel="prefetch" href="/assets/js/189.cecf5612.js"><link rel="prefetch" href="/assets/js/19.5b5ad6a1.js"><link rel="prefetch" href="/assets/js/190.fefddc0e.js"><link rel="prefetch" href="/assets/js/191.e4bb534f.js"><link rel="prefetch" href="/assets/js/192.d724ea09.js"><link rel="prefetch" href="/assets/js/193.89dfe351.js"><link rel="prefetch" href="/assets/js/194.eae77bb4.js"><link rel="prefetch" href="/assets/js/195.04c629f4.js"><link rel="prefetch" href="/assets/js/196.1d478ed9.js"><link rel="prefetch" href="/assets/js/197.c1d0596a.js"><link rel="prefetch" href="/assets/js/198.16c3a6e0.js"><link rel="prefetch" href="/assets/js/199.d7abc746.js"><link rel="prefetch" href="/assets/js/20.6800493a.js"><link rel="prefetch" href="/assets/js/200.d0333b05.js"><link rel="prefetch" href="/assets/js/201.b004c4b0.js"><link rel="prefetch" href="/assets/js/202.2bdcfdad.js"><link rel="prefetch" href="/assets/js/203.3d4404c8.js"><link rel="prefetch" href="/assets/js/204.6811f526.js"><link rel="prefetch" href="/assets/js/205.dbe839ca.js"><link rel="prefetch" href="/assets/js/206.cf281ab8.js"><link rel="prefetch" href="/assets/js/207.b30ec93b.js"><link rel="prefetch" href="/assets/js/208.5bd20623.js"><link rel="prefetch" href="/assets/js/209.08173f53.js"><link rel="prefetch" href="/assets/js/21.6589052c.js"><link rel="prefetch" href="/assets/js/210.fc083767.js"><link rel="prefetch" href="/assets/js/211.a40c0012.js"><link rel="prefetch" href="/assets/js/212.ad79a40d.js"><link rel="prefetch" href="/assets/js/213.05dfd83a.js"><link rel="prefetch" href="/assets/js/214.d9155fcb.js"><link rel="prefetch" href="/assets/js/215.1884162c.js"><link rel="prefetch" href="/assets/js/216.d7e400c0.js"><link rel="prefetch" href="/assets/js/22.f648d829.js"><link rel="prefetch" href="/assets/js/23.1898021f.js"><link rel="prefetch" href="/assets/js/24.c498cdc9.js"><link rel="prefetch" href="/assets/js/25.2cf0f1ab.js"><link rel="prefetch" href="/assets/js/26.4b576a28.js"><link rel="prefetch" href="/assets/js/27.48016cde.js"><link rel="prefetch" href="/assets/js/28.fab602ac.js"><link rel="prefetch" href="/assets/js/29.2daa3972.js"><link rel="prefetch" href="/assets/js/3.13e892f5.js"><link rel="prefetch" href="/assets/js/30.495325df.js"><link rel="prefetch" href="/assets/js/31.257c7222.js"><link rel="prefetch" href="/assets/js/32.ef7a504e.js"><link rel="prefetch" href="/assets/js/33.bc231dd7.js"><link rel="prefetch" href="/assets/js/34.55a39391.js"><link rel="prefetch" href="/assets/js/35.3c4d8e9c.js"><link rel="prefetch" href="/assets/js/36.4557224c.js"><link rel="prefetch" href="/assets/js/37.e9a90f7d.js"><link rel="prefetch" href="/assets/js/38.25785bc2.js"><link rel="prefetch" href="/assets/js/39.eea4fa35.js"><link rel="prefetch" href="/assets/js/4.5bdb9365.js"><link rel="prefetch" href="/assets/js/40.b213be66.js"><link rel="prefetch" href="/assets/js/41.ab652ab8.js"><link rel="prefetch" href="/assets/js/42.a05627ab.js"><link rel="prefetch" href="/assets/js/43.f53f1b1d.js"><link rel="prefetch" href="/assets/js/44.5bb97f6d.js"><link rel="prefetch" href="/assets/js/45.4b41539d.js"><link rel="prefetch" href="/assets/js/46.1ac7cc3f.js"><link rel="prefetch" href="/assets/js/47.0580f030.js"><link rel="prefetch" href="/assets/js/48.b0904b52.js"><link rel="prefetch" href="/assets/js/49.7ce5240a.js"><link rel="prefetch" href="/assets/js/5.7c68fdb5.js"><link rel="prefetch" href="/assets/js/50.c3d83fd2.js"><link rel="prefetch" href="/assets/js/51.ba60fa98.js"><link rel="prefetch" href="/assets/js/52.7b2d060b.js"><link rel="prefetch" href="/assets/js/53.34682882.js"><link rel="prefetch" href="/assets/js/54.36faf575.js"><link rel="prefetch" href="/assets/js/55.054b9174.js"><link rel="prefetch" href="/assets/js/56.341e473a.js"><link rel="prefetch" href="/assets/js/57.f2277797.js"><link rel="prefetch" href="/assets/js/58.13a608e8.js"><link rel="prefetch" href="/assets/js/59.7d091c83.js"><link rel="prefetch" href="/assets/js/6.c8da7ca7.js"><link rel="prefetch" href="/assets/js/60.97bfc772.js"><link rel="prefetch" href="/assets/js/61.1c93e74f.js"><link rel="prefetch" href="/assets/js/62.3a202bb4.js"><link rel="prefetch" href="/assets/js/63.20335462.js"><link rel="prefetch" href="/assets/js/64.3b00af96.js"><link rel="prefetch" href="/assets/js/65.6a30f1ee.js"><link rel="prefetch" href="/assets/js/66.98d9d390.js"><link rel="prefetch" href="/assets/js/67.0864c47b.js"><link rel="prefetch" href="/assets/js/68.158bb649.js"><link rel="prefetch" href="/assets/js/69.7693303c.js"><link rel="prefetch" href="/assets/js/7.e4c88d0e.js"><link rel="prefetch" href="/assets/js/70.8b2a4075.js"><link rel="prefetch" href="/assets/js/71.a152429d.js"><link rel="prefetch" href="/assets/js/72.1ea49d1e.js"><link rel="prefetch" href="/assets/js/73.58e400b1.js"><link rel="prefetch" href="/assets/js/74.89658617.js"><link rel="prefetch" href="/assets/js/75.e4eca339.js"><link rel="prefetch" href="/assets/js/76.5ae0023e.js"><link rel="prefetch" href="/assets/js/77.b58d5308.js"><link rel="prefetch" href="/assets/js/78.4efde4e8.js"><link rel="prefetch" href="/assets/js/79.fcdba4f6.js"><link rel="prefetch" href="/assets/js/80.8fe0bd7d.js"><link rel="prefetch" href="/assets/js/81.06afa735.js"><link rel="prefetch" href="/assets/js/82.c078b99d.js"><link rel="prefetch" href="/assets/js/83.b17bc157.js"><link rel="prefetch" href="/assets/js/84.22e70000.js"><link rel="prefetch" href="/assets/js/86.ec79f7c8.js"><link rel="prefetch" href="/assets/js/87.94d33a73.js"><link rel="prefetch" href="/assets/js/88.e652193a.js"><link rel="prefetch" href="/assets/js/89.85faf96c.js"><link rel="prefetch" href="/assets/js/90.01d8d63c.js"><link rel="prefetch" href="/assets/js/91.e26c2ed5.js"><link rel="prefetch" href="/assets/js/92.30a511f4.js"><link rel="prefetch" href="/assets/js/93.c21eb434.js"><link rel="prefetch" href="/assets/js/94.f7611eb6.js"><link rel="prefetch" href="/assets/js/95.d443ab00.js"><link rel="prefetch" href="/assets/js/96.58237798.js"><link rel="prefetch" href="/assets/js/97.72f7f921.js"><link rel="prefetch" href="/assets/js/98.a6e4129e.js"><link rel="prefetch" href="/assets/js/99.731056a5.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5143d2e0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b4a844ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/link/" class="nav-link">
+  导航
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link router-link-active">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发进阶" class="dropdown-title"><span class="title">开发进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发进阶" class="mobile-dropdown-title"><span class="title">开发进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          工程化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/engineering/" class="nav-link">
+  工程化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          部署
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/deploy/" class="nav-link">
+  部署
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/algorithm/" class="nav-link">
+  算法
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端开发" class="dropdown-title"><span class="title">前端开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端开发" class="mobile-dropdown-title"><span class="title">前端开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          H5
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/css/" class="nav-link">
+  CSS
+</a></li></ul></li><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/" class="nav-link">
+  Vue
+</a></li></ul></li><li class="dropdown-item"><h4>
+          随笔
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/qa/" class="nav-link">
+  QA
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发技能" class="dropdown-title"><span class="title">开发技能</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发技能" class="mobile-dropdown-title"><span class="title">开发技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/database/" class="nav-link">
+  数据库
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/skill/" class="nav-link">
+  后端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://copy.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端归纳
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/link/" class="nav-link">
+  导航
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link router-link-active">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发进阶" class="dropdown-title"><span class="title">开发进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发进阶" class="mobile-dropdown-title"><span class="title">开发进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          工程化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/engineering/" class="nav-link">
+  工程化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          部署
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/deploy/" class="nav-link">
+  部署
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/algorithm/" class="nav-link">
+  算法
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端开发" class="dropdown-title"><span class="title">前端开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端开发" class="mobile-dropdown-title"><span class="title">前端开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          H5
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/css/" class="nav-link">
+  CSS
+</a></li></ul></li><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/" class="nav-link">
+  Vue
+</a></li></ul></li><li class="dropdown-item"><h4>
+          随笔
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/qa/" class="nav-link">
+  QA
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发技能" class="dropdown-title"><span class="title">开发技能</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发技能" class="mobile-dropdown-title"><span class="title">开发技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/database/" class="nav-link">
+  数据库
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/skill/" class="nav-link">
+  后端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://copy.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端归纳
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/mdn/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/mdn/1-原型" class="sidebar-heading clickable"><span>原型</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mdn/2-promise" class="sidebar-heading clickable router-link-active open"><span>promise</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/mdn/2-promise/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/mdn/2-promise/19道promise面试题.html" class="sidebar-link">搜尽全网，整理了19道promise 面试题，你能做对几个？</a></li><li><a href="/mdn/2-promise/Promise.html" class="sidebar-link">Promise</a></li><li><a href="/mdn/2-promise/Promise面试实战指北.html" class="active sidebar-link">Promise面试实战指北</a></li><li><a href="/mdn/2-promise/c.html" class="sidebar-link">面试官问：Promise.all 使用、原理实现及错误处理</a></li><li><a href="/mdn/2-promise/基于把原生ajax封装为Promise形式.html" class="sidebar-link">基于把原生ajax封装为Promise形式。</a></li><li><a href="/mdn/2-promise/实现自己promise.html" class="sidebar-link">两天时间，实现自己的 Promise</a></li><li><a href="/mdn/2-promise/异步循环打印.html" class="sidebar-link">实现异步循环打印</a></li><li><a href="/mdn/2-promise/最简实现Promise.html" class="sidebar-link">最简实现Promise-支持异步链式调用</a></li><li><a href="/mdn/2-promise/模拟实现.html" class="sidebar-link">基础版本</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mdn/3-this" class="sidebar-heading clickable"><span>this</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mdn/4-api" class="sidebar-heading clickable"><span>api</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mdn/5-手写实现" class="sidebar-heading clickable"><span>手写实现</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="promise面试实战指北"><a href="#promise面试实战指北" class="header-anchor">#</a> Promise面试实战指北</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/hz0P_brF8uCu2DDtW_vgVQ" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/hz0P_brF8uCu2DDtW_vgVQ<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="超时控制"><a href="#超时控制" class="header-anchor">#</a> 超时控制</h2> <h3 id="背景"><a href="#背景" class="header-anchor">#</a> <strong>背景</strong></h3> <ol><li>众所周知，fetch请求是无法设置超时时间的，因此我们需要自己去模拟一个超时控制。</li> <li>转盘问题，一个抽奖转盘动画效果有5秒，但是一般来说向后端请求转盘结果只需要不到一秒，因此请求结果至少得等5秒才能展现给用户。</li></ol> <h3 id="问题分析"><a href="#问题分析" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>首先，超时控制比较简单，和Promise.race()的思想是类似，或者可以直接使用这个函数去解决。</p> <p>然后，转盘问题如果要答好，需要考虑两种情况。</p> <ol><li>转盘动画还未完成，请求结果已经拿到了，此时要等到动画完成再展示结果给用户。</li> <li>转盘动画完成了，请求结果还未拿到，此时需要等待结果返回（可以设置请求超时时间）。</li></ol> <p>所以，转盘问题更适合用Promise.all()来解决。</p> <h3 id="实战版源码"><a href="#实战版源码" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <p>代码分为多个版本，从上自下，记忆难度递增但面试成绩更优，请按需选择。</p> <p>一、基于<code>Promise.race()</code>的超时控制。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 超时控制版本一
+ */
+
+/**
+ * 辅助函数，封装一个延时promise
+ * @param {number} delay 延迟时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function sleep(delay) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; reject(new Error(&quot;timeout&quot;)), delay);
+  });
+}
+
+/**
+ * 将原promise包装成一个带超时控制的promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} timeout 最大超时时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function timeoutPromise(requestFn, timeout) {
+  return Promise.race([requestFn(), sleep(timeout)]);
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 超时的例子
+timeoutPromise(createRequest(2000), 1000).catch((error) =&gt;
+  console.error(error)
+);
+// 不超时的例子
+timeoutPromise(createRequest(2000), 3000).then((res) =&gt; console.log(res));
+
+复制代码
+</code></pre></div><p>二、将<code>promise.race()</code>干掉。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 超时控制版本二
+ */
+
+/**
+ * 辅助函数，封装一个延时promise
+ * @param {number} delay 延迟时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function sleep(delay) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; reject(new Error(&quot;timeout&quot;)), delay);
+  });
+}
+
+/**
+ * 将原promise包装成一个带超时控制的promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} timeout 最大超时时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function timeoutPromise(requestFn, timeout) {
+  const promises = [requestFn(), sleep(timeout)];
+  return new Promise((resolve, reject) =&gt; {
+    for (const p of promises) {
+      p.then((res) =&gt; resolve(res)).catch((error) =&gt; reject(error));
+    }
+  });
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 超时的例子
+timeoutPromise(createRequest(2000), 1000).catch((error) =&gt;
+  console.error(error)
+);
+// 不超时的例子
+timeoutPromise(createRequest(2000), 3000).then((res) =&gt; console.log(res));
+
+复制代码
+</code></pre></div><p>三、基于<code>Promise.all()</code>的转盘问题（不考虑请求超时），和上面略有不同的是<code>sleep</code>函数超时后<code>Promise</code>从<code>pending</code>态转到<code>fulfilled</code>态而不是<code>rejected</code>态。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 转盘问题不考虑超时
+ */
+
+/**
+ * 辅助函数，封装一个延时promise
+ * @param {number} delay 延迟时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function sleep(delay) {
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; resolve(delay), delay);
+  });
+}
+
+/**
+ * 将原promise包装成一个转盘promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} animationDuration 动画持续时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function turntablePromise(requestFn, animationDuration) {
+  return Promise.all([requestFn(), sleep(animationDuration)]);
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 请求比转盘动画快
+turntablePromise(createRequest(2000), 5000).then((res) =&gt; console.log(res));
+
+// 请求比转盘动画慢
+turntablePromise(createRequest(2000), 1000).then((res) =&gt; console.error(res));
+
+复制代码
+</code></pre></div><p>四：基于<code>Promise.all()</code>的转盘问题（考虑请求超时），无非就是拼刀刀没什么亮点。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 转盘问题考虑超时
+ */
+
+/**
+ * 将原promise包装成一个带超时控制的promise
+ * @param {Promise&lt;any&gt;} request 你的请求
+ * @param {number} timeout 最大超时时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function timeoutPromise(request, timeout) {
+  function sleep(delay) {
+    return new Promise((resolve, reject) =&gt; {
+      setTimeout(() =&gt; reject(new Error(&quot;timeout&quot;)), delay);
+    });
+  }
+  const promises = [request, sleep(timeout)];
+  return new Promise((resolve, reject) =&gt; {
+    for (const p of promises) {
+      p.then((res) =&gt; resolve(res)).catch((error) =&gt; reject(error));
+    }
+  });
+}
+
+/**
+ * 将原promise包装成一个转盘promise
+ * @param {()=&gt;Promise&lt;any&gt;} requestFn 请求函数
+ * @param {number} timeout 超时时间
+ * @param {number} animationDuration 动画持续时间
+ * @returns {Promise&lt;any&gt;}
+ */
+function turntablePromise(requestFn, timeout, animationDuration) {
+  function sleep(delay) {
+    return new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; resolve(delay), delay);
+    });
+  }
+  return Promise.all([timeoutPromise(requestFn(), timeout), sleep(animationDuration)]);
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+// 请求比转盘动画慢且超时
+turntablePromise(createRequest(2000), 1500, 1000).catch((error) =&gt;
+  console.error(error)
+);
+
+复制代码
+</code></pre></div><p>五：干掉<code>Promise.all()</code>，这版代码没有加什么核心的东西，无非就是手写一下这个api，所以留给大家自测。</p> <h2 id="取消重复请求"><a href="#取消重复请求" class="header-anchor">#</a> 取消重复请求</h2> <h3 id="背景-2"><a href="#背景-2" class="header-anchor">#</a> <strong>背景</strong></h3> <p>当用户频繁点击一个搜索Button时，会在短时间内发出大量的搜索请求，给服务器造成一定的压力，同时也会因请求响应的先后次序不同而导致渲染的数据与预期不符。这里，我们可以使用防抖来减小服务器压力，但是却没法很好地解决后面的问题。</p> <h3 id="问题分析-2"><a href="#问题分析-2" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>这个问题的本质在于，同一类请求是有序发出的（根据按钮点击的次序），但是响应顺序却是无法预测的，我们通常只希望渲染最后一次发出请求响应的数据，而其他数据则丢弃。因此，我们需要丢弃（或不处理）除最后一次请求外的其他请求的响应数据。</p> <h3 id="实战版源码-2"><a href="#实战版源码-2" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <p>其实axios已经有了很好的实践，大家可以配合阿宝哥的文章来食用。此处取消<code>promise</code>的实现借助了上一章节的技巧，而在<code>axios</code>中因为所有异步都是由xhr发出的，所以<code>axios</code>的实现中还借助了xhr.abort()来取消一个请求。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 取消请求
+ */
+
+function CancelablePromise() {
+  this.pendingPromise = null;
+}
+
+// 包装一个请求并取消重复请求
+CancelablePromise.prototype.request = function (requestFn) {
+  if (this.pendingPromise) {
+    this.cancel(&quot;取消重复请求&quot;);
+  }
+  const _promise = new Promise((resolve, reject) =&gt; (this.reject = reject));
+  this.pendingPromise = Promise.race([requestFn(), _promise]);
+  return this.pendingPromise;
+};
+
+// 取消当前请求
+CancelablePromise.prototype.cancel = function (reason) {
+  this.reject(new Error(reason));
+  this.pendingPromise = null;
+};
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    });
+}
+
+
+const cancelPromise = new CancelablePromise();
+
+// 前四个请求将被自动取消
+for (let i = 0; i &lt; 5; i++) {
+  cancelPromise
+    .request(createRequest(1000))
+    .then((res) =&gt; console.log(res)) // 最后一个 done
+    .catch((err) =&gt; console.error(err)); // 前四个 error: 取消重复请求
+}
+
+// 设置一个定时器等3s，让前面的请求都处理完再继续测试
+setTimeout(() =&gt; {
+  // 手动取消最后一个请求
+  cancelPromise
+    .request(createRequest(1000))
+    .then((res) =&gt; console.log(res))
+    .catch((err) =&gt; console.error(err)); // error:手动取消
+  cancelPromise.cancel(&quot;手动取消&quot;);
+}, 3000);
+
+// 设置一个定时器等4s，让前面的请求都处理完再继续测试
+setTimeout(() =&gt; {
+  cancelPromise
+    .request(createRequest(1000))
+    .then((res) =&gt; console.log(res)) // done
+    .catch((err) =&gt; console.error(err));
+}, 4000);
+
+复制代码
+</code></pre></div><h2 id="限制并发请求数"><a href="#限制并发请求数" class="header-anchor">#</a> 限制并发请求数</h2> <h3 id="背景-3"><a href="#背景-3" class="header-anchor">#</a> <strong>背景</strong></h3> <p>一般来说，我们不会刻意去控制请求的并发。只有在一些场景下可能会用到，比如，收集用户的批量操作（每个操作对应一次请求），待用户操作完成后一次性发出。另外，为了减小服务器的压力，我们还会<strong>限制并发数</strong>。</p> <h3 id="问题分析-3"><a href="#问题分析-3" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>看上去，Promise.allSettled很适合应对这样的场景，但是稍微想一下就能发现，它能控制的粒度还是太粗了。首先，它必须等待所有<code>Promise</code>都<code>resolve</code>或<code>reject</code>，其次，如果有并发限制的话用它来做还需要分批请求，实际效率也会比较低，短木板效应很明显。</p> <h3 id="实战版源码-3"><a href="#实战版源码-3" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 限制并发请求数
+ */
+
+/**
+ * 并发请求限制并发数
+ * @param {()=&gt;Promise&lt;any&gt; []} requestFns 并发请求函数数组
+ * @param {numer} limit 限制最大并发数
+ */
+function concurrentRequest(requestFns, limit) {
+  // 递归函数
+  function recursion(requestFn) {
+    requestFn().finally(() =&gt; {
+      if (_requestFns.length &gt; 0) {
+        recursion(_requestFns.pop());
+      }
+    });
+  }
+  const _requestFns = [...requestFns];
+  // 限制最大并发量
+  for (let i = 0; i &lt; limit &amp;&amp; _requestFns.length &gt; 0; i++) {
+    recursion(_requestFns.pop());
+  }
+}
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    }).then((res) =&gt; {
+      console.log(res);
+    });
+}
+
+const requestFns = [];
+for (let i = 0; i &lt; 10; i++) {
+  requestFns.push(createRequest(1000));
+}
+
+concurrentRequest(requestFns, 3);
+
+复制代码
+</code></pre></div><h2 id="管理全局loading态"><a href="#管理全局loading态" class="header-anchor">#</a> 管理全局loading态</h2> <h3 id="背景-4"><a href="#背景-4" class="header-anchor">#</a> <strong>背景</strong></h3> <p>当我们一个页面或组件涉及到多个请求时，可能会对应多个loading态的管理。在某些场景下，我们只希望用一个loading态去管理所有异步请求，当任一存在pending态的请求时，展示全局loading组件，当所有请求都fulfilled或rejected时，隐藏全局loading组件。</p> <h3 id="问题分析-4"><a href="#问题分析-4" class="header-anchor">#</a> <strong>问题分析</strong></h3> <p>这个问题的关键就是在于我们需要管理所有pending态的请求，并适时更新loading态。</p> <h3 id="实战版源码-4"><a href="#实战版源码-4" class="header-anchor">#</a> <strong>实战版源码</strong></h3> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 管理全局loading态
+ */
+
+function PromiseManager() {
+  this.pendingPromise = new Set();
+  this.loading = false;
+}
+
+// 给每个pending态的promise生成一个身份标志
+PromiseManager.prototype.generateKey = function () {
+  return `${new Date().getTime()}-${parseInt(Math.random() * 1000)}`;
+};
+
+PromiseManager.prototype.push = function (...requestFns) {
+  for (const requestFn of requestFns) {
+    const key = this.generateKey();
+    this.pendingPromise.add(key);
+    requestFn().finally(() =&gt; {
+      this.pendingPromise.delete(key);
+      this.loading = this.pendingPromise.size !== 0;
+    });
+  }
+};
+
+// ----------下面是测试用例------------
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(&quot;done&quot;);
+      }, delay);
+    }).then((res) =&gt; console.log(res));
+}
+
+const manager = new PromiseManager();
+
+// 增加多个请求
+manager.push(createRequest(1000), createRequest(2000), createRequest(3000));
+manager.push(createRequest(1500));
+
+// 每秒轮询loading态，直到loading为false
+const id = setInterval(() =&gt; {
+  console.log(manager.loading);
+  if (!manager.loading) clearInterval(id);
+}, 1000);
+
+// 增加多个请求
+manager.push(createRequest(2500));
+复制代码
+</code></pre></div><h2 id="加餐"><a href="#加餐" class="header-anchor">#</a> 加餐</h2> <h3 id="串行化的三种实现方式"><a href="#串行化的三种实现方式" class="header-anchor">#</a> <strong>串行化的三种实现方式</strong></h3> <p>使用串行化的常见场景，请求之间有依赖关系或时序关系，如红绿灯。</p> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * 串行化的三种实现
+ **/
+
+// 法一，递归法
+function runPromiseInSeq1(requestFns) {
+  function recursion(requestFns) {
+    if (requestFns.length === 0) return;
+    requestFns
+      .shift()()
+      .finally(() =&gt; recursion(requestFns));
+  }
+  const _requestFns = [...requestFns];
+  recursion(_requestFns);
+}
+// 法二：迭代法
+async function runPromiseInSeq2(requestFns) {
+  for (const requestFn of requestFns) {
+    await requestFn();
+  }
+}
+// 法三：reduce
+function runPromiseInSeq3(requestFns) {
+  requestFns.reduce((pre, cur) =&gt; pre.finally(() =&gt; cur()), Promise.resolve());
+}
+
+// 模拟一个异步请求函数
+function createRequest(delay) {
+  return () =&gt;
+    new Promise((resolve) =&gt; {
+      setTimeout(() =&gt; {
+        resolve(delay);
+      }, delay);
+    }).then((res) =&gt; {
+      console.log(res);
+    });
+}
+// 执行顺序从左至右
+const requestFns = [
+  createRequest(3000),
+  createRequest(2000),
+  createRequest(1000),
+];
+// 串行调用
+runPromiseInSeq1(requestFns);
+// runPromiseInSeq2(requestFns);
+// runPromiseInSeq3(requestFns);
+
+复制代码
+</code></pre></div><h3 id="_20行最简异步链式调用"><a href="#_20行最简异步链式调用" class="header-anchor">#</a> <strong>20行最简异步链式调用</strong></h3> <p>这里模拟了Promise的异步链式调用，代码出处见文章。</p> <div class="language- extra-class"><pre class="language-text"><code>function Promise(fn) {
+  this.cbs = [];
+
+  const resolve = (value) =&gt; {
+    setTimeout(() =&gt; {
+      this.data = value;
+      this.cbs.forEach((cb) =&gt; cb(value));
+    });
+  }
+
+  fn(resolve);
+}
+
+Promise.prototype.then = function (onResolved) {
+  return new Promise((resolve) =&gt; {
+    this.cbs.push(() =&gt; {
+      const res = onResolved(this.data);
+      if (res instanceof Promise) {
+        res.then(resolve);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+};
+</code></pre></div><h2 id="写在后面"><a href="#写在后面" class="header-anchor">#</a> 写在后面</h2> <p>这位笔名<code>鼠子</code>，是22届的学弟。想要找他交流的话，可以加我微信，我拉你进群，他长期在群里。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">个人微信</p> <p>往期推荐</p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247497006&amp;idx=2&amp;sn=bcd167d3f9ec511e863b18808d31e75e&amp;chksm=cfdbe673f8ac6f650c65b9f9306aa0fe95fd0322e58b23cd023d5eaebefb095ee36b1c42ea48&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">TypeScript 4.4beat版本发布<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247496983&amp;idx=1&amp;sn=0f6d70881803b6f97a501915e318501d&amp;chksm=cfdbe64af8ac6f5cd04f60f3291676e3165c7b4da4187dee695d492ba64ffca05b177db1fbd0&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">进腾讯了<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247497139&amp;idx=1&amp;sn=c9e5ca74d903aeccd0862bb3aa44e40f&amp;chksm=cfdbe6eef8ac6ff8d86547accd41d2fe4bc36ff486baab04695ff86d861f23c418aae85c818c&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">张一鸣先生的四年收获与工作感悟<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>收录于话题 #前端面试</p> <p>14个</p> <p>下一篇21 道关于性能优化的面试题（附答案）</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">11/8/2024, 10:19:43 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mdn/2-promise/Promise.html" class="prev">
+        Promise
+      </a></span> <span class="next"><a href="/mdn/2-promise/c.html">
+        面试官问：Promise.all 使用、原理实现及错误处理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.447fea52.js" defer></script><script src="/assets/js/2.57da4f88.js" defer></script><script src="/assets/js/1.a76cc220.js" defer></script><script src="/assets/js/85.7e56ce9f.js" defer></script>
+  </body>
+</html>

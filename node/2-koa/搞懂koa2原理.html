@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>一文搞懂 koa2 核心原理 | note</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/logo.webp">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="知识归纳总结">
+    <meta name="keywords" content="blog,react,node,js">
+    
+    <link rel="preload" href="/assets/css/0.styles.b4a844ec.css" as="style"><link rel="preload" href="/assets/js/app.447fea52.js" as="script"><link rel="preload" href="/assets/js/2.57da4f88.js" as="script"><link rel="preload" href="/assets/js/1.a76cc220.js" as="script"><link rel="preload" href="/assets/js/110.c26bacc8.js" as="script"><link rel="prefetch" href="/assets/js/10.50f73657.js"><link rel="prefetch" href="/assets/js/100.6be385a1.js"><link rel="prefetch" href="/assets/js/101.81462761.js"><link rel="prefetch" href="/assets/js/102.c8574913.js"><link rel="prefetch" href="/assets/js/103.edf4da17.js"><link rel="prefetch" href="/assets/js/104.957e299a.js"><link rel="prefetch" href="/assets/js/105.62db7699.js"><link rel="prefetch" href="/assets/js/106.5bb35c23.js"><link rel="prefetch" href="/assets/js/107.a7d99347.js"><link rel="prefetch" href="/assets/js/108.e5a534df.js"><link rel="prefetch" href="/assets/js/109.6cbde664.js"><link rel="prefetch" href="/assets/js/11.0390ceee.js"><link rel="prefetch" href="/assets/js/111.9360a59a.js"><link rel="prefetch" href="/assets/js/112.8cd53094.js"><link rel="prefetch" href="/assets/js/113.d0ebeec4.js"><link rel="prefetch" href="/assets/js/114.ec19f01c.js"><link rel="prefetch" href="/assets/js/115.4d3a89e6.js"><link rel="prefetch" href="/assets/js/116.a2a462f7.js"><link rel="prefetch" href="/assets/js/117.722c988a.js"><link rel="prefetch" href="/assets/js/118.f713753b.js"><link rel="prefetch" href="/assets/js/119.0125b80b.js"><link rel="prefetch" href="/assets/js/12.f88bec36.js"><link rel="prefetch" href="/assets/js/120.cd8ba30b.js"><link rel="prefetch" href="/assets/js/121.4c137fcb.js"><link rel="prefetch" href="/assets/js/122.d242343d.js"><link rel="prefetch" href="/assets/js/123.cdd643cd.js"><link rel="prefetch" href="/assets/js/124.a166a490.js"><link rel="prefetch" href="/assets/js/125.91acf062.js"><link rel="prefetch" href="/assets/js/126.09c27dbc.js"><link rel="prefetch" href="/assets/js/127.0d254650.js"><link rel="prefetch" href="/assets/js/128.431a6444.js"><link rel="prefetch" href="/assets/js/129.421c57ef.js"><link rel="prefetch" href="/assets/js/13.963ad03b.js"><link rel="prefetch" href="/assets/js/130.f980bd2e.js"><link rel="prefetch" href="/assets/js/131.f5d4dec1.js"><link rel="prefetch" href="/assets/js/132.b5fe7c86.js"><link rel="prefetch" href="/assets/js/133.e21e8968.js"><link rel="prefetch" href="/assets/js/134.cfde36a7.js"><link rel="prefetch" href="/assets/js/135.e11bbca9.js"><link rel="prefetch" href="/assets/js/136.d29baf7d.js"><link rel="prefetch" href="/assets/js/137.0d102a51.js"><link rel="prefetch" href="/assets/js/138.53de572f.js"><link rel="prefetch" href="/assets/js/139.35296624.js"><link rel="prefetch" href="/assets/js/14.512f15b9.js"><link rel="prefetch" href="/assets/js/140.939a9838.js"><link rel="prefetch" href="/assets/js/141.a0dbf983.js"><link rel="prefetch" href="/assets/js/142.b79d2722.js"><link rel="prefetch" href="/assets/js/143.f59c2798.js"><link rel="prefetch" href="/assets/js/144.45695bae.js"><link rel="prefetch" href="/assets/js/145.be0d5407.js"><link rel="prefetch" href="/assets/js/146.4eeb3c90.js"><link rel="prefetch" href="/assets/js/147.13a97e91.js"><link rel="prefetch" href="/assets/js/148.a9cb8c8d.js"><link rel="prefetch" href="/assets/js/149.3f1dd92d.js"><link rel="prefetch" href="/assets/js/15.a674496c.js"><link rel="prefetch" href="/assets/js/150.56dd1be8.js"><link rel="prefetch" href="/assets/js/151.fc9a2f7e.js"><link rel="prefetch" href="/assets/js/152.53bd3a44.js"><link rel="prefetch" href="/assets/js/153.5607c16e.js"><link rel="prefetch" href="/assets/js/154.ad730ace.js"><link rel="prefetch" href="/assets/js/155.57d2a2cb.js"><link rel="prefetch" href="/assets/js/156.a092fa0e.js"><link rel="prefetch" href="/assets/js/157.966a0773.js"><link rel="prefetch" href="/assets/js/158.04bf03ea.js"><link rel="prefetch" href="/assets/js/159.33574240.js"><link rel="prefetch" href="/assets/js/16.ed7e507f.js"><link rel="prefetch" href="/assets/js/160.cee6d2e8.js"><link rel="prefetch" href="/assets/js/161.45a39d07.js"><link rel="prefetch" href="/assets/js/162.f40c82ce.js"><link rel="prefetch" href="/assets/js/163.a8c1cfc2.js"><link rel="prefetch" href="/assets/js/164.d57c2637.js"><link rel="prefetch" href="/assets/js/165.44596485.js"><link rel="prefetch" href="/assets/js/166.989571e6.js"><link rel="prefetch" href="/assets/js/167.d50ff3ee.js"><link rel="prefetch" href="/assets/js/168.6035f621.js"><link rel="prefetch" href="/assets/js/169.330a08ba.js"><link rel="prefetch" href="/assets/js/17.de667ca5.js"><link rel="prefetch" href="/assets/js/170.9f889b63.js"><link rel="prefetch" href="/assets/js/171.8cf81cba.js"><link rel="prefetch" href="/assets/js/172.f0d70990.js"><link rel="prefetch" href="/assets/js/173.ea277ff7.js"><link rel="prefetch" href="/assets/js/174.4a3a3c49.js"><link rel="prefetch" href="/assets/js/175.cea93f7c.js"><link rel="prefetch" href="/assets/js/176.5dd9d8fc.js"><link rel="prefetch" href="/assets/js/177.02903ac2.js"><link rel="prefetch" href="/assets/js/178.46bd7e6a.js"><link rel="prefetch" href="/assets/js/179.e69ff40a.js"><link rel="prefetch" href="/assets/js/18.b44e84af.js"><link rel="prefetch" href="/assets/js/180.710c8f29.js"><link rel="prefetch" href="/assets/js/181.8069e76c.js"><link rel="prefetch" href="/assets/js/182.4c34a2bf.js"><link rel="prefetch" href="/assets/js/183.46c4777e.js"><link rel="prefetch" href="/assets/js/184.efb2e0ea.js"><link rel="prefetch" href="/assets/js/185.f18ec0c0.js"><link rel="prefetch" href="/assets/js/186.23f2ac84.js"><link rel="prefetch" href="/assets/js/187.3b612006.js"><link rel="prefetch" href="/assets/js/188.5a59c9aa.js"><link rel="prefetch" href="/assets/js/189.cecf5612.js"><link rel="prefetch" href="/assets/js/19.5b5ad6a1.js"><link rel="prefetch" href="/assets/js/190.fefddc0e.js"><link rel="prefetch" href="/assets/js/191.e4bb534f.js"><link rel="prefetch" href="/assets/js/192.d724ea09.js"><link rel="prefetch" href="/assets/js/193.89dfe351.js"><link rel="prefetch" href="/assets/js/194.eae77bb4.js"><link rel="prefetch" href="/assets/js/195.04c629f4.js"><link rel="prefetch" href="/assets/js/196.1d478ed9.js"><link rel="prefetch" href="/assets/js/197.c1d0596a.js"><link rel="prefetch" href="/assets/js/198.16c3a6e0.js"><link rel="prefetch" href="/assets/js/199.d7abc746.js"><link rel="prefetch" href="/assets/js/20.6800493a.js"><link rel="prefetch" href="/assets/js/200.d0333b05.js"><link rel="prefetch" href="/assets/js/201.b004c4b0.js"><link rel="prefetch" href="/assets/js/202.2bdcfdad.js"><link rel="prefetch" href="/assets/js/203.3d4404c8.js"><link rel="prefetch" href="/assets/js/204.6811f526.js"><link rel="prefetch" href="/assets/js/205.dbe839ca.js"><link rel="prefetch" href="/assets/js/206.cf281ab8.js"><link rel="prefetch" href="/assets/js/207.b30ec93b.js"><link rel="prefetch" href="/assets/js/208.5bd20623.js"><link rel="prefetch" href="/assets/js/209.08173f53.js"><link rel="prefetch" href="/assets/js/21.6589052c.js"><link rel="prefetch" href="/assets/js/210.fc083767.js"><link rel="prefetch" href="/assets/js/211.a40c0012.js"><link rel="prefetch" href="/assets/js/212.ad79a40d.js"><link rel="prefetch" href="/assets/js/213.05dfd83a.js"><link rel="prefetch" href="/assets/js/214.d9155fcb.js"><link rel="prefetch" href="/assets/js/215.1884162c.js"><link rel="prefetch" href="/assets/js/216.d7e400c0.js"><link rel="prefetch" href="/assets/js/22.f648d829.js"><link rel="prefetch" href="/assets/js/23.1898021f.js"><link rel="prefetch" href="/assets/js/24.c498cdc9.js"><link rel="prefetch" href="/assets/js/25.2cf0f1ab.js"><link rel="prefetch" href="/assets/js/26.4b576a28.js"><link rel="prefetch" href="/assets/js/27.48016cde.js"><link rel="prefetch" href="/assets/js/28.fab602ac.js"><link rel="prefetch" href="/assets/js/29.2daa3972.js"><link rel="prefetch" href="/assets/js/3.13e892f5.js"><link rel="prefetch" href="/assets/js/30.495325df.js"><link rel="prefetch" href="/assets/js/31.257c7222.js"><link rel="prefetch" href="/assets/js/32.ef7a504e.js"><link rel="prefetch" href="/assets/js/33.bc231dd7.js"><link rel="prefetch" href="/assets/js/34.55a39391.js"><link rel="prefetch" href="/assets/js/35.3c4d8e9c.js"><link rel="prefetch" href="/assets/js/36.4557224c.js"><link rel="prefetch" href="/assets/js/37.e9a90f7d.js"><link rel="prefetch" href="/assets/js/38.25785bc2.js"><link rel="prefetch" href="/assets/js/39.eea4fa35.js"><link rel="prefetch" href="/assets/js/4.5bdb9365.js"><link rel="prefetch" href="/assets/js/40.b213be66.js"><link rel="prefetch" href="/assets/js/41.ab652ab8.js"><link rel="prefetch" href="/assets/js/42.a05627ab.js"><link rel="prefetch" href="/assets/js/43.f53f1b1d.js"><link rel="prefetch" href="/assets/js/44.5bb97f6d.js"><link rel="prefetch" href="/assets/js/45.4b41539d.js"><link rel="prefetch" href="/assets/js/46.1ac7cc3f.js"><link rel="prefetch" href="/assets/js/47.0580f030.js"><link rel="prefetch" href="/assets/js/48.b0904b52.js"><link rel="prefetch" href="/assets/js/49.7ce5240a.js"><link rel="prefetch" href="/assets/js/5.7c68fdb5.js"><link rel="prefetch" href="/assets/js/50.c3d83fd2.js"><link rel="prefetch" href="/assets/js/51.ba60fa98.js"><link rel="prefetch" href="/assets/js/52.7b2d060b.js"><link rel="prefetch" href="/assets/js/53.34682882.js"><link rel="prefetch" href="/assets/js/54.36faf575.js"><link rel="prefetch" href="/assets/js/55.054b9174.js"><link rel="prefetch" href="/assets/js/56.341e473a.js"><link rel="prefetch" href="/assets/js/57.f2277797.js"><link rel="prefetch" href="/assets/js/58.13a608e8.js"><link rel="prefetch" href="/assets/js/59.7d091c83.js"><link rel="prefetch" href="/assets/js/6.c8da7ca7.js"><link rel="prefetch" href="/assets/js/60.97bfc772.js"><link rel="prefetch" href="/assets/js/61.1c93e74f.js"><link rel="prefetch" href="/assets/js/62.3a202bb4.js"><link rel="prefetch" href="/assets/js/63.20335462.js"><link rel="prefetch" href="/assets/js/64.3b00af96.js"><link rel="prefetch" href="/assets/js/65.6a30f1ee.js"><link rel="prefetch" href="/assets/js/66.98d9d390.js"><link rel="prefetch" href="/assets/js/67.0864c47b.js"><link rel="prefetch" href="/assets/js/68.158bb649.js"><link rel="prefetch" href="/assets/js/69.7693303c.js"><link rel="prefetch" href="/assets/js/7.e4c88d0e.js"><link rel="prefetch" href="/assets/js/70.8b2a4075.js"><link rel="prefetch" href="/assets/js/71.a152429d.js"><link rel="prefetch" href="/assets/js/72.1ea49d1e.js"><link rel="prefetch" href="/assets/js/73.58e400b1.js"><link rel="prefetch" href="/assets/js/74.89658617.js"><link rel="prefetch" href="/assets/js/75.e4eca339.js"><link rel="prefetch" href="/assets/js/76.5ae0023e.js"><link rel="prefetch" href="/assets/js/77.b58d5308.js"><link rel="prefetch" href="/assets/js/78.4efde4e8.js"><link rel="prefetch" href="/assets/js/79.fcdba4f6.js"><link rel="prefetch" href="/assets/js/80.8fe0bd7d.js"><link rel="prefetch" href="/assets/js/81.06afa735.js"><link rel="prefetch" href="/assets/js/82.c078b99d.js"><link rel="prefetch" href="/assets/js/83.b17bc157.js"><link rel="prefetch" href="/assets/js/84.22e70000.js"><link rel="prefetch" href="/assets/js/85.7e56ce9f.js"><link rel="prefetch" href="/assets/js/86.ec79f7c8.js"><link rel="prefetch" href="/assets/js/87.94d33a73.js"><link rel="prefetch" href="/assets/js/88.e652193a.js"><link rel="prefetch" href="/assets/js/89.85faf96c.js"><link rel="prefetch" href="/assets/js/90.01d8d63c.js"><link rel="prefetch" href="/assets/js/91.e26c2ed5.js"><link rel="prefetch" href="/assets/js/92.30a511f4.js"><link rel="prefetch" href="/assets/js/93.c21eb434.js"><link rel="prefetch" href="/assets/js/94.f7611eb6.js"><link rel="prefetch" href="/assets/js/95.d443ab00.js"><link rel="prefetch" href="/assets/js/96.58237798.js"><link rel="prefetch" href="/assets/js/97.72f7f921.js"><link rel="prefetch" href="/assets/js/98.a6e4129e.js"><link rel="prefetch" href="/assets/js/99.731056a5.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5143d2e0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b4a844ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">note</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/link/" class="nav-link">
+  导航
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link router-link-active">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发进阶" class="dropdown-title"><span class="title">开发进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发进阶" class="mobile-dropdown-title"><span class="title">开发进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          工程化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/engineering/" class="nav-link">
+  工程化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          部署
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/deploy/" class="nav-link">
+  部署
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/algorithm/" class="nav-link">
+  算法
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端开发" class="dropdown-title"><span class="title">前端开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端开发" class="mobile-dropdown-title"><span class="title">前端开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          H5
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/css/" class="nav-link">
+  CSS
+</a></li></ul></li><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/" class="nav-link">
+  Vue
+</a></li></ul></li><li class="dropdown-item"><h4>
+          随笔
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/qa/" class="nav-link">
+  QA
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发技能" class="dropdown-title"><span class="title">开发技能</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发技能" class="mobile-dropdown-title"><span class="title">开发技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/database/" class="nav-link">
+  数据库
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/skill/" class="nav-link">
+  后端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://copy.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端归纳
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/link/" class="nav-link">
+  导航
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  React
+</a></div><div class="nav-item"><a href="/mdn/" class="nav-link">
+  MDN
+</a></div><div class="nav-item"><a href="/node/" class="nav-link router-link-active">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发进阶" class="dropdown-title"><span class="title">开发进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发进阶" class="mobile-dropdown-title"><span class="title">开发进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          工程化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/engineering/" class="nav-link">
+  工程化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          部署
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/deploy/" class="nav-link">
+  部署
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/algorithm/" class="nav-link">
+  算法
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端开发" class="dropdown-title"><span class="title">前端开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端开发" class="mobile-dropdown-title"><span class="title">前端开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          H5
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/css/" class="nav-link">
+  CSS
+</a></li></ul></li><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/" class="nav-link">
+  Vue
+</a></li></ul></li><li class="dropdown-item"><h4>
+          随笔
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/qa/" class="nav-link">
+  QA
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发技能" class="dropdown-title"><span class="title">开发技能</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发技能" class="mobile-dropdown-title"><span class="title">开发技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/database/" class="nav-link">
+  数据库
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/skill/" class="nav-link">
+  后端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接" class="mobile-dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://copy.aduang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端归纳
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/chnduang/cv-collect-blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/node/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/node/1-基础" class="sidebar-heading clickable"><span>基础</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/node/2-koa" class="sidebar-heading clickable router-link-active open"><span>koa</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/node/2-koa/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/node/2-koa/koa-mongo.html" class="sidebar-link">Koa结合MongoDB使用</a></li><li><a href="/node/2-koa/koa-mysql.html" class="sidebar-link">koa2中对mysql简单封装实现增删改查的基本操作</a></li><li><a href="/node/2-koa/koa-swagger.html" class="sidebar-link">Koa结合swagger-ui使用</a></li><li><a href="/node/2-koa/koa-webpack.html" class="sidebar-link">在koa2中使用webpack进行项目打包</a></li><li><a href="/node/2-koa/koa2.html" class="sidebar-link">Koa2</a></li><li><a href="/node/2-koa/koa实践总结.html" class="sidebar-link">Koa实践总结</a></li><li><a href="/node/2-koa/搞懂koa2原理.html" class="active sidebar-link">一文搞懂 koa2 核心原理</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="一文搞懂-koa2-核心原理"><a href="#一文搞懂-koa2-核心原理" class="header-anchor">#</a> 一文搞懂 koa2 核心原理</h2> <blockquote><p><a href="https://mp.weixin.qq.com/s/dC2MlBK-fCLnr1DDnAjgUQ" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/dC2MlBK-fCLnr1DDnAjgUQ<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="koa的基础结构"><a href="#koa的基础结构" class="header-anchor">#</a> koa的基础结构</h2> <p>首先，让我们认识一下koa框架的定位——koa是一个精简的node框架：</p> <ul><li>它基于node原生req和res，封装自定义的request和response对象，并基于它们封装成一个统一的context对象。</li> <li>它基于async/await（generator）的洋葱模型实现了中间件机制。</li></ul> <p>koa框架的核心目录如下：</p> <div class="language- extra-class"><pre class="language-text"><code>── lib
+   ├── application.js
+   ├── context.js
+   ├── request.js
+   └── response.js
+
+// 每个文件的具体功能
+── lib
+   ├── new Koa()  || ctx.app
+   ├── ctx
+   ├── ctx.req  || ctx.request
+   └── ctx.res  || ctx.response
+复制代码
+</code></pre></div><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/H8M5QJDxMHqDVfNYjycFhicdeSxfLCDqstZ3UFt0qh6Fec6XLcqD9RouQRQxpLnUiaQVXfKFrbHdVlVdVRWDwyEw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">undefined</p> <h2 id="koa源码基础骨架"><a href="#koa源码基础骨架" class="header-anchor">#</a> koa源码基础骨架</h2> <p><code>application.js</code> application.js是koa的主入口，也是核心部分，主要干了以下几件事情：</p> <ol><li>完成了koa实例初始化的工作，启动服务器</li> <li>实现了洋葱模型的中间件机制</li> <li>封装了高内聚的context对象</li> <li>实现了异步函数的统一错误处理机制</li></ol> <p><code>context.js</code> context.js主要干了两件事情：</p> <ol><li>完成了错误事件处理</li> <li>代理了response对象和request对象的部分属性和方法</li></ol> <p><code>request.js</code> request对象基于node原生req封装了一系列便利属性和方法，供处理请求时调用。所以当你访问ctx.request.xxx的时候，实际上是在访问request对象上的setter和getter。</p> <p><code>response.js</code> response对象基于node原生res封装了一系列便利属性和方法，供处理请求时调用。所以当你访问ctx.response.xxx的时候，实际上是在访问response对象上的setter和getter。</p> <p><strong>4个文件的代码结构如下：</strong></p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>undefined</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">undefined</p> <h3 id="koa工作流"><a href="#koa工作流" class="header-anchor">#</a> koa工作流</h3> <p><strong>Koa整个流程可以分成三步:</strong></p> <ol><li>初始化阶段</li></ol> <p>new初始化一个实例，包括创建中间件数组、创建context/request/response对象，再使用use(fn)添加中间件到middleware数组，最后使用listen 合成中间件fnMiddleware，按照洋葱模型依次执行中间件，返回一个callback函数给http.createServer，开启服务器，等待http请求。结构图如下图所示：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">undefined</p> <ol><li>请求阶段</li></ol> <p>每次请求，createContext生成一个新的ctx，传给fnMiddleware，触发中间件的整个流程。3. 响应阶段 整个中间件完成后，调用respond方法，对请求做最后的处理，返回响应给客户端。</p> <h3 id="koa中间件机制与实现"><a href="#koa中间件机制与实现" class="header-anchor">#</a> koa中间件机制与实现</h3> <p>koa中间件机制是采用koa-compose实现的，compose函数接收middleware数组作为参数，middleware中每个对象都是async函数，返回一个以context和next作为入参的函数，我们跟源码一样，称其为fnMiddleware在外部调用this.handleRequest的最后一行，运行了中间件：<code>fnMiddleware(ctx).then(handleResponse).catch(onerror);</code></p> <p>以下是<code>koa-compose</code>库中的核心函数：<img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>我们不禁会问：中间件中的<code>next</code>到底是什么呢？为什么执行<code>next</code>就进入到了下一个中间件了呢？中间件所构成的执行栈如下图所示，其中<code>next</code>就是一个含有<code>dispatch</code>方法的函数。在第1个中间件执行<code>next</code>时，相当于在执行<code>dispatch(2)</code>，就进入到了下一个中间件的处理流程。因为<code>dispatch</code>返回的都是<code>Promise</code>对象，因此在第n个中间件<code>await next()</code>时，就进入到了第n+1个中间件，而当第n+1个中间件执行完成后，可以返回第n个中间件。但是在某个中间件中，我们没有写<code>next()</code>，就不会再执行它后面所有的中间件。运行机制如下图所示：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>undefined</p> <h3 id="koa-convert解析"><a href="#koa-convert解析" class="header-anchor">#</a> koa-convert解析</h3> <p>在koa2中引入了koa-convert库，在使用use函数时，会使用到convert方法（只展示核心的代码）：</p> <div class="language- extra-class"><pre class="language-text"><code>const convert = require('koa-convert');
+
+module.exports = class Application extends Emitter {
+    use(fn) {
+        if (typeof fn !== 'function') throw new TypeError('middleware must be a function!');
+        if (isGeneratorFunction(fn)) {
+            deprecate('Support for generators will be removed';
+            fn = convert(fn);
+        }
+        debug('use %s', fn._name || fn.name || '-');
+        this.middleware.push(fn);
+        return this;
+    }
+}
+复制代码
+</code></pre></div><p>koa2框架针对koa1版本作了兼容处理，中间件函数如果是<code>generator</code>函数的话，会使用<code>koa-convert</code>进行转换为“类async函数”。首先我们必须理解<code>generator</code>和<code>async</code>的区别：<code>async</code>函数会自动执行，而<code>generator</code>每次都要调用next函数才能执行，因此我们需要寻找到一个合适的方法，让<code>next()</code>函数能够一直持续下去即可，这时可以将<code>generator</code>中<code>yield</code>的<code>value</code>指定成为一个<code>Promise</code>对象。下面看看<code>koa-convert</code>中的核心代码：</p> <div class="language- extra-class"><pre class="language-text"><code>const co = require('co')
+const compose = require('koa-compose')
+
+module.exports = convert
+
+function convert (mw) {
+  if (typeof mw !== 'function') {
+    throw new TypeError('middleware must be a function')
+  }
+  if (mw.constructor.name !== 'GeneratorFunction') {
+    return mw
+  }
+  const converted = function (ctx, next) {
+    return co.call(ctx, mw.call(ctx, createGenerator(next)))
+  }
+  converted._name = mw._name || mw.name
+  return converted
+}
+复制代码
+</code></pre></div><p>首先针对传入的参数mw作校验，如果不是函数则抛异常，如果不是<code>generator</code>函数则直接返回，如果是<code>generator</code>函数则使用<code>co</code>函数进行处理。co的核心代码如下：</p> <div class="language- extra-class"><pre class="language-text"><code>function co(gen) {
+  var ctx = this;
+  var args = slice.call(arguments, 1);
+  
+  return new Promise(function(resolve, reject) {
+    if (typeof gen === 'function') gen = gen.apply(ctx, args);
+    if (!gen || typeof gen.next !== 'function') return resolve(gen);
+
+    onFulfilled();
+    
+    function onFulfilled(res) {
+      var ret;
+      try {
+        ret = gen.next(res);
+      } catch (e) {
+        return reject(e);
+      }
+      next(ret);
+      return null;
+    }
+
+    function onRejected(err) {
+      var ret;
+      try {
+        ret = gen.throw(err);
+      } catch (e) {
+        return reject(e);
+      }
+      next(ret);
+    }
+
+    function next(ret) {
+      if (ret.done) return resolve(ret.value);
+      var value = toPromise.call(ctx, ret.value);
+      if (value &amp;&amp; isPromise(value)) return value.then(onFulfilled, onRejected);
+      return onRejected(new TypeError('You may only yield a function, promise, generator, array, or object, '
+        + 'but the following object was passed: &quot;' + String(ret.value) + '&quot;'));
+    }
+  });
+}
+复制代码
+</code></pre></div><p>由以上代码可以看出，co中作了这样的处理：</p> <ol><li>把一个<code>generator</code>封装在一个<code>Promise</code>对象中</li> <li>这个<code>Promise</code>对象再次把它的<code>gen.next()</code>也封装出<code>Promise</code>对象，相当于这个子<code>Promise</code>对象完成的时候也重复调用<code>gen.next()</code></li> <li>当所有迭代完成时，对父<code>Promise</code>对象进行<code>resolve</code></li></ol> <p>以上工作完成后，就形成了一个类async函数。</p> <h3 id="异步函数的统一错误处理机制"><a href="#异步函数的统一错误处理机制" class="header-anchor">#</a> 异步函数的统一错误处理机制</h3> <p>在koa框架中，有两种错误的处理机制，分别为：</p> <ol><li>中间件捕获</li> <li>框架捕获</li></ol> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">undefined</p> <p>中间件捕获是针对中间件做了错误处理响应，如<code>fnMiddleware(ctx).then(handleResponse).catch(onerror)</code>，在中间件运行出错时，会出发onerror监听函数。框架捕获是在<code>context.js</code>中作了相应的处理<code>this.app.emit('error', err, this)</code>，这里的<code>this.app</code>是对<code>application</code>的引用，当<code>context.js</code>调用<code>onerror</code>时，实际上是触发<code>application</code>实例的<code>error</code>事件 ，因为<code>Application</code>类是继承自<code>EventEmitter</code>类的，因此具备了处理异步事件的能力，可以使用<code>EventEmitter</code>类中对于异步函数的错误处理方法。</p> <p>koa为什么能实现异步函数的统一错误处理？因为async函数返回的是一个Promise对象，如果async函数内部抛出了异常，则会导致Promise对象变为reject状态，异常会被catch的回调函数(onerror)捕获到。如果await后面的Promise对象变为reject状态，reject的参数也可以被catch的回调函数(onerror)捕获到。</p> <h3 id="委托模式在koa中的应用"><a href="#委托模式在koa中的应用" class="header-anchor">#</a> 委托模式在koa中的应用</h3> <p>delegates库由知名的 TJ 所写，可以帮我们方便快捷地使用设计模式当中的委托模式，即外层暴露的对象将请求委托给内部的其他对象进行处理。</p> <p>delegates 基本用法就是将内部对象的变量或者函数绑定在暴露在外层的变量上，直接通过 delegates 方法进行如下委托，基本的委托方式包含：</p> <ul><li>getter：外部对象可以直接访问内部对象的值</li> <li>setter：外部对象可以直接修改内部对象的值</li> <li>access：包含 getter 与 setter 的功能</li> <li>method：外部对象可以直接调用内部对象的函数</li></ul> <p>delegates 原理就是__defineGetter__和__defineSetter__。在application.createContext函数中，被创建的context对象会挂载基于request.js实现的request对象和基于response.js实现的response对象。下面2个delegate的作用是让context对象代理request和response的部分属性和方法：</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片">undefined</p> <p>做了以上的处理之后，<code>context.request</code>的许多属性都被委托在<code>context上</code>了，<code>context.response</code>的许多方法都被委托在<code>context</code>上了，因此我们不仅可以使用<code>this.ctx.request.xx</code>、<code>this.ctx.response.xx</code>取到对应的属性，还可以通过<code>this.ctx.xx</code>取到<code>this.ctx.request</code>或<code>this.ctx.response</code>下挂载的<code>xx</code>方法。</p> <p>我们在源码中可以看到，response.js和request.js使用的是get set代理，而context.js使用的是delegate代理，为什么呢？因为delegate方法比较单一，只代理属性；但是使用set和get方法还可以加入一些额外的逻辑处理。在context.js中，只需要代理属性即可，使用delegate方法完全可以实现此效果，而在response.js和request.js中是需要处理其他逻辑的，如以下对query作的格式化操作：</p> <div class="language- extra-class"><pre class="language-text"><code>get query() {
+  const str = this.querystring;
+  const c = this._querycache = this._querycache || {};
+  return c[str] || (c[str] = qs.parse(str));
+}
+复制代码
+</code></pre></div><p>到这里，相信你对koa2的原理实现有了更深的理解吧？</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">11/8/2024, 10:19:43 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/node/2-koa/koa实践总结.html" class="prev">
+        Koa实践总结
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.447fea52.js" defer></script><script src="/assets/js/2.57da4f88.js" defer></script><script src="/assets/js/1.a76cc220.js" defer></script><script src="/assets/js/110.c26bacc8.js" defer></script>
+  </body>
+</html>
